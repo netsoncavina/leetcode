@@ -52,18 +52,23 @@ let n = 3
 let m = 3
 
 
-const merge = (nums1, m, nums2, n) => {
-    let mIndex = m - 1;
-    let nIndex = n - 1;
-    let finalPos = m + n - 1;
-
-    while (nIndex >= 0) {
-        nums1[finalPos--] = (mIndex >= 0 && nums1[mIndex] > nums2[nIndex]) 
-            ? nums1[mIndex--] 
-            : nums2[nIndex--];
+var merge = function(nums1, m, nums2, n) {
+    let mIndex = m-1
+    let nIndex = n-1
+    let finalPos = (m+n-1)
+    while(nIndex>=0){
+        if(mIndex >= 0 && (nums1[mIndex] > nums2[nIndex])){
+            nums1[finalPos] = nums1[mIndex]
+            mIndex--
+        }
+        else{
+            nums1[finalPos] = nums2[nIndex]
+            nIndex--
+        }
+        finalPos--
     }
+    
 };
-
 
 merge(nums1, m, nums2, n)
 
